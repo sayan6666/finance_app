@@ -13,12 +13,12 @@ public class Start_Handle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // Action = false; ÍÅ ÂÊËÞ×ÀÒÜ!
+        if (Input.touchCount > 0)
+            Action = true;
     }
 
     void OnMouseDown()
     {
         Action = true;
-        Debug.Log(Action);
     }
 }
