@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Main_View : MonoBehaviour
 {
+    public GameObject Message_Screen;
+    public void Phone_Screen_Active()
+    {
+        /*GameObject.Find("Main_Screen").SetActive(false);
+        Message_Screen.SetActive(true);
+        Message_Controller.phone_inactive = false;*/
+        //Main_Controller.phone_active = false;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

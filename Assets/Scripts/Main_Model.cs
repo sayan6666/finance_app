@@ -19,15 +19,18 @@ public class Main_Model : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("Player").GetComponent<Player>();
-        GreenTechSolutions = new Stock("GreenTech Solutions", "", 50, 15, 4, 25,  GameObject.Find("Stock1"));
+        GreenTechSolutions = new Stock("GreenTech Solutions", "", 50, 15, 4, 25,  GameObject.Find("Stock1"), "good invest");
         StockSet(GameObject.Find("Stock1"), GreenTechSolutions);
-        ToxicGoldInc = new Stock("ToxicGoldInc", "", 5, -15, 0, -50,  GameObject.Find("Stock2"));
+        ToxicGoldInc = new Stock("ToxicGoldInc", "", 5, -15, 0, -50,  GameObject.Find("Stock2"), "bad invest");
         StockSet(GameObject.Find("Stock2"), ToxicGoldInc);
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+       if (Main_Controller.phone_active)
+        {
+            GameObject.Find("Main_Screen").GetComponent<Main_View>().Phone_Screen_Active();
+        }
     }
 }
