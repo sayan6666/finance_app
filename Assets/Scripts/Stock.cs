@@ -10,8 +10,10 @@ public class Stock : MonoBehaviour
     public int divs { get; set; }
     public int income_rise { get; set; }
     public int status_required { get; }
+    public int amount = 0;
     public GameObject stock_obj;
-    public Input_Handler input_handler;
+    public Input_Handler input_handler_buy;
+    public Input_Handler input_handler_sell;
     public string advice;
 
     public Stock(string name_c, string description_c, int price_c, int pe_c, int divs_c, int income_rise_c/*, int status_required_c*/, GameObject stock_obj_c, string advice)
@@ -25,15 +27,24 @@ public class Stock : MonoBehaviour
         status_required = 0;
         stock_obj = stock_obj_c;
         this.advice = advice;
-        input_handler = stock_obj.transform.GetChild(5).GetComponent<Input_Handler>();
+        input_handler_buy = stock_obj.transform.GetChild(5).GetComponent<Input_Handler>();
+        input_handler_sell = stock_obj.transform.GetChild(6).GetComponent<Input_Handler>();
     }
 
     public void Input_Check()
     {
-        if (input_handler.Action)
+        //Debug.Log(Player.money);
+        if (input_handler_sell.Action && amount>0)
         {
-            input_handler.Action = false;
+            input_handler_sell.Action = false;
+            Player.money = Player.money + price;
+            amount--;
+        }
+        if (input_handler_buy.Action && Player.money>=price)
+        {
+            input_handler_buy.Action = false;
             Player.money = Player.money - price;
+            amount++;
             Message_Model.AddMessage(advice, scripte.messages);
             scripte.messages++;
             scripte.Move_Button();

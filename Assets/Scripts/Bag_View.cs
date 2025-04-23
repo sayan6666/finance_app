@@ -1,19 +1,19 @@
-using UnityEditor;
 using UnityEngine;
 
-public class Intro_Model : MonoBehaviour
+public class Bag_View : MonoBehaviour
 {
-    public GameObject Intro;
+    private void Awake()
+    {
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Bag_Model.StocksSet();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Intro_Controller.Intro_Ended == true)
-            Intro.SetActive(false);
+        Bag_Model.StocksSet();
     }
 }

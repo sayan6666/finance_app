@@ -1,8 +1,16 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class Message_Model : MonoBehaviour
 {
+    public static GameObject Next_Button;
+    public static GameObject Exit_Button;
+    public static void Buttons_Active()
+    {
+        Next_Button.SetActive(!Next_Button.activeSelf);
+        Exit_Button.SetActive(!Exit_Button.activeSelf);
+    }
     public static void AddMessage(string message, int amount)
     {
         var New_Message = GameObject.Instantiate(GameObject.Find("Message_Origin"));
@@ -16,15 +24,14 @@ public class Message_Model : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        Next_Button = GameObject.Find("Next_Button"); ;
+        Exit_Button = GameObject.Find("Exit_Message_Button");
+        Message_Model.Buttons_Active();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Message_Controller.phone_inactive==false)
-        {
-            GameObject.Find("Message_Screen").GetComponent<Message_View>().Phone_Screen_InActive();
-        }
+
     }
 }

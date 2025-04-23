@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Main_Controller : MonoBehaviour
 {
-    public static bool phone_active=false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,9 +13,16 @@ public class Main_Controller : MonoBehaviour
     {
         Main_Model.GreenTechSolutions.Input_Check();
         Main_Model.ToxicGoldInc.Input_Check();
-        if (Input_Handler2.Input_Check())
+        if (GameObject.Find("Phone_Button").GetComponent<Input_Handler>().Action)
         {
-            phone_active = true;
+            GameObject.Find("Phone_Button").GetComponent<Input_Handler>().Action=false;
+            Main_Model.Screen_Active();
+        }
+        if (GameObject.Find("Bag_Button").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("Bag_Button").GetComponent<Input_Handler>().Action = false;
+            Bag_Model.Screen_Active();
+            Main_Model.Screen_Active();    
         }
     }
 }

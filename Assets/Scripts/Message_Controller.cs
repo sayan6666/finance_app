@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Message_Controller : MonoBehaviour
 {
-    public static bool phone_inactive = true;
-
+    private bool flag=false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,10 +12,17 @@ public class Message_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input_Handler2.Input_Check())
+        if (Main_Model.Screen_Position!=Main_Model.Screen.transform.position && Bag_Model.Screen_Position!=Bag_Model.Screen.transform.position && flag==false)
         {
-            phone_inactive = true;
-            //Debug.Log("overlap");
+            Message_Model.Buttons_Active();
+            flag = true;
+        }
+        if (GameObject.Find("Exit_Message_Button").GetComponent<Input_Handler>().Action)
+        {
+            flag = false;
+            GameObject.Find("Exit_Message_Button").GetComponent<Input_Handler>().Action = false;
+            Message_Model.Buttons_Active();
+            Main_Model.Screen_Active();
         }
     }
 }

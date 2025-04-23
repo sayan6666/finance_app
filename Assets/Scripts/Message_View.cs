@@ -14,7 +14,8 @@ public class Message_View : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        /*GameObject.Find("Next_Button").SetActive(false);
+        GameObject.Find("Exit_Message_Button").SetActive(false);*/
     }
 
     // Update is called once per frame
