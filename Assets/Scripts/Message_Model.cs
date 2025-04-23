@@ -26,6 +26,8 @@ public class Message_Model : MonoBehaviour
     {
         Next_Button = GameObject.Find("Next_Button"); ;
         Exit_Button = GameObject.Find("Exit_Message_Button");
+        AddMessage("Здравствуйте! Спасибо что решили воспользоваться моими услугами.",scripte.messages); 
+        scripte.messages++;
         Message_Model.Buttons_Active();
     }
 
