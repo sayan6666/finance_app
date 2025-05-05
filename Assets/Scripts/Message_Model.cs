@@ -28,7 +28,6 @@ public class Message_Model : MonoBehaviour
         Exit_Button = GameObject.Find("Exit_Message_Button");
         AddMessage("Здравствуйте! Спасибо что решили воспользоваться моими услугами.",scripte.messages); 
         scripte.messages++;
-        Message_Model.Buttons_Active();
     }
 
     // Update is called once per frame

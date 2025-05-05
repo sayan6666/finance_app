@@ -15,10 +15,10 @@ public class Bag_Model : MonoBehaviour
     }
     public static void StocksSet()
     {
-        GameObject.Find("Bag_Stock1").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.name);
-        GameObject.Find("Bag_Stock1").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText("Количество: "+Main_Model.GreenTechSolutions.amount.ToString());
-        GameObject.Find("Bag_Stock2").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.name);
-        GameObject.Find("Bag_Stock2").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText("Количество: " + Main_Model.ToxicGoldInc.amount.ToString());
+        GameObject.Find("Bag_Stock1").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.name);
+        GameObject.Find("Bag_Stock1").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.amount.ToString());
+        GameObject.Find("Bag_Stock2").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.name);
+        GameObject.Find("Bag_Stock2").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.amount.ToString());
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,7 +26,7 @@ public class Bag_Model : MonoBehaviour
     { 
         Screen = GameObject.Find("Bag_Screen");
         Screen_Position = Screen.transform.position;
-        Screen_Active();
+        //Screen_Active();
     }
 
     // Update is called once per frame

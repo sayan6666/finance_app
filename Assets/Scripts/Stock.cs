@@ -1,22 +1,49 @@
 using System;
+using System.Xml.Serialization;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
-public class Stock : MonoBehaviour
+[Serializable]
+[XmlRoot("StockList")]
+public class StockList
 {
-    new public string name { get; }
-    public string description { get; }
+    [XmlElement("Stock")]
+    public StockFields[] stocks = new StockFields[2];
+}
+
+[Serializable]
+public class StockFields
+{
+    [XmlElement("name")]
+    public string name { get; set; }
+    [XmlElement("description")]
+    public string description { get; set; }
+    [XmlElement("price")]
     public int price { get; set; }
+    [XmlElement("pe")]
     public int pe { get; set; }
+    [XmlElement("divs")]
     public int divs { get; set; }
+    [XmlElement("income_rise")]
     public int income_rise { get; set; }
-    public int status_required { get; }
+    [XmlElement("status_required")]
+    public int status_required { get; set; }
+    [XmlElement("amount")]
     public int amount = 0;
-    public GameObject stock_obj;
+    [XmlElement("stock_obj")]
+    public string stock_obj_name;
+    [XmlIgnore]
     public Input_Handler input_handler_buy;
+    [XmlIgnore]
     public Input_Handler input_handler_sell;
+    [XmlIgnore]
+    public Input_Handler input_handler_info1;
+    [XmlIgnore]
+    public Input_Handler input_handler_info2;
+    [XmlElement("advice")]
     public string advice;
 
-    public Stock(string name_c, string description_c, int price_c, int pe_c, int divs_c, int income_rise_c/*, int status_required_c*/, GameObject stock_obj_c, string advice)
+    public StockFields(string name_c, string description_c, int price_c, int pe_c, int divs_c, int income_rise_c/*, int status_required_c*/, string stock_obj_c, string advice)
     {
         name = name_c;
         description = description_c;
@@ -25,29 +52,53 @@ public class Stock : MonoBehaviour
         divs = divs_c;
         income_rise = income_rise_c;
         status_required = 0;
-        stock_obj = stock_obj_c;
+        stock_obj_name = stock_obj_c;
         this.advice = advice;
-        input_handler_buy = stock_obj.transform.GetChild(5).GetComponent<Input_Handler>();
-        input_handler_sell = stock_obj.transform.GetChild(6).GetComponent<Input_Handler>();
+        input_handler_buy = GameObject.Find(stock_obj_name).transform.GetChild(2).GetComponent<Input_Handler>();
+        input_handler_sell = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(2).GetComponent<Input_Handler>();
+        input_handler_info1=  GameObject.Find(stock_obj_name).transform.GetChild(3).GetComponent<Input_Handler>();
+        input_handler_info2 = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(3).GetComponent<Input_Handler>();
     }
+}
+
+[Serializable]
+public class Stock : MonoBehaviour
+{
+    public StockFields fields;
+
+    public Stock() { }
 
     public void Input_Check()
     {
         //Debug.Log(Player.money);
-        if (input_handler_sell.Action && amount>0)
+        if (fields.input_handler_sell.Action && fields.amount>0)
         {
-            input_handler_sell.Action = false;
-            Player.money = Player.money + price;
-            amount--;
+            fields.input_handler_sell.Action = false;
+            Player.fields.money = Player.fields.money + fields.price;
+            fields.amount--;
         }
-        if (input_handler_buy.Action && Player.money>=price)
+        if (fields.input_handler_buy.Action && Player.fields.money>=fields.price)
         {
-            input_handler_buy.Action = false;
-            Player.money = Player.money - price;
-            amount++;
-            Message_Model.AddMessage(advice, scripte.messages);
+            fields.input_handler_buy.Action = false;
+            Player.fields.money = Player.fields.money - fields.price;
+            fields.amount++;
+            Message_Model.AddMessage(fields.advice, scripte.messages);
             scripte.messages++;
-            scripte.Move_Button();
+            //scripte.Move_Button();
+        }
+        if (fields.input_handler_info1.Action /*&& !fields.input_handler_buy.Action*/)
+        {
+            fields.input_handler_info1.Action = false;
+            Details_Model.previous_screen = 2;
+            Details_Model.current = this;
+            Screen_Changer.Change_Screen(4);
+        }
+        if (fields.input_handler_info2.Action/* && !fields.input_handler_sell.Action*/)
+        {
+            fields.input_handler_info2.Action = false;
+            Details_Model.previous_screen = 1;
+            Details_Model.current = this;
+            Screen_Changer.Change_Screen(4);
         }
     }
 

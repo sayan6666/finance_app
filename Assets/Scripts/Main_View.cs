@@ -22,6 +22,6 @@ public class Main_View : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Player.money_display.SetText(Player.money.ToString());
+        Player.fields.money_display.SetText(Player.fields.money.ToString());
     }
 }

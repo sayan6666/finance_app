@@ -14,6 +14,9 @@ public class Intro_Model : MonoBehaviour
     void Update()
     {
         if (Intro_Controller.Intro_Ended == true)
-            Intro.SetActive(false);
+        {
+            Intro_Controller.Intro_Ended = false;
+            Screen_Changer.Change_Screen(2);
+        }
     }
 }
