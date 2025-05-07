@@ -15,7 +15,7 @@ public class Details_View : MonoBehaviour
     {
         name = GameObject.Find("Details_Screen").transform.GetChild(1).GetComponent<TextMeshPro>();
         Description = GameObject.Find("Description").GetComponent<TextMeshPro>();
-        price = GameObject.Find("Price").GetComponent<TextMeshPro>();
+        price = GameObject.Find("Details_Screen").transform.GetChild(2).GetComponent<TextMeshPro>();
         pe = GameObject.Find("PE").GetComponent<TextMeshPro>();
         div = GameObject.Find("Div").GetComponent<TextMeshPro>();
         income_rise = GameObject.Find("Income_Rise").GetComponent<TextMeshPro>();

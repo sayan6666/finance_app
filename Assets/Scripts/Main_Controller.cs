@@ -22,7 +22,7 @@ public class Main_Controller : MonoBehaviour
         if (GameObject.Find("Bag_Button").GetComponent<Input_Handler>().Action)
         {
             Screen_Changer.Change_Screen(1);
-            Player.fields.money_display.rectTransform.SetPositionAndRotation(new Vector3(10,Player.fields.money_display.rectTransform.position.y, Player.fields.money_display.rectTransform.position.z), new Quaternion(0,0,0,0));
+            Player.fields.money_display.rectTransform.SetPositionAndRotation(new Vector3(10, 3.561f, Player.fields.money_display.rectTransform.position.z), new Quaternion(0,0,0,0));
             GameObject.Find("Bag_Button").GetComponent<Input_Handler>().Action = false;
             //Bag_Model.Screen_Active();
             //Main_Model.Screen_Active();    

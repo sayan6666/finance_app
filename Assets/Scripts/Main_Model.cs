@@ -17,7 +17,7 @@ public class Main_Model : MonoBehaviour
     void StockSet(GameObject obj, Stock stock)
     {
         obj.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(stock.fields.name);
-        obj.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText("Цена:"+stock.fields.price);
+        obj.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(stock.fields.price+"$");
         /*obj.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText("P/E:"+stock.fields.pe);
         obj.transform.GetChild(3).gameObject.GetComponent<TextMeshPro>().SetText("Див. доход:"+stock.fields.divs+"%");
         obj.transform.GetChild(4).gameObject.GetComponent<TextMeshPro>().SetText("Рост\nприбыли:"+stock.fields.income_rise+"%");*/

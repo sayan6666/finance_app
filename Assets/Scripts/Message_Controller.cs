@@ -19,8 +19,9 @@ public class Message_Controller : MonoBehaviour
         }*/
         if (GameObject.Find("Exit_Message_Button").GetComponent<Input_Handler>().Action)
         {
-            Screen_Changer.Change_Screen(2);
             GameObject.Find("Exit_Message_Button").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(3);
+            
             /*flag = false;
             
             Message_Model.Buttons_Active();

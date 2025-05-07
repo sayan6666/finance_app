@@ -91,14 +91,14 @@ public class Stock : MonoBehaviour
             fields.input_handler_info1.Action = false;
             Details_Model.previous_screen = 2;
             Details_Model.current = this;
-            Screen_Changer.Change_Screen(4);
+            Screen_Changer.Change_Screen(5);
         }
         if (fields.input_handler_info2.Action/* && !fields.input_handler_sell.Action*/)
         {
             fields.input_handler_info2.Action = false;
             Details_Model.previous_screen = 1;
             Details_Model.current = this;
-            Screen_Changer.Change_Screen(4);
+            Screen_Changer.Change_Screen(5);
         }
     }
 

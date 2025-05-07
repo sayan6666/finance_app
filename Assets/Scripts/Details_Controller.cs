@@ -11,10 +11,10 @@ public class Details_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Exit_Button").GetComponent<Input_Handler>().Action)
+        if (GameObject.Find("Exit_Details_Button").GetComponent<Input_Handler>().Action)
         {  
             Screen_Changer.Change_Screen(Details_Model.previous_screen);
-            GameObject.Find("Exit_Button").GetComponent<Input_Handler>().Action = false;
+            GameObject.Find("Exit_Details_Button").GetComponent<Input_Handler>().Action = false;
         }
     }
 }
