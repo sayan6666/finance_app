@@ -17,6 +17,6 @@ public class Screen_Changer : MonoBehaviour
 
     public static void Change_Screen(int screen)
     {
-        Camera_Object.transform.SetPositionAndRotation(new Vector3(screen*10,Camera_Object.transform.position.y, Camera_Object.transform.position.z), new Quaternion(0,0,0,0));
+        Camera_Object.transform.SetPositionAndRotation(new Vector3((screen*10)+3,Camera_Object.transform.position.y, Camera_Object.transform.position.z), new Quaternion(0,0,0,0));
     }
 }

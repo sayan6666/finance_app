@@ -14,7 +14,9 @@ public class PlayerFields
     [XmlIgnore]//[XmlElement("status")]
     public string status;
     [XmlIgnore]
-    public TextMeshPro money_display;
+    public TextMeshPro money_display1;
+    [XmlIgnore]
+    public TextMeshPro money_display2;
 }
 
 
@@ -28,7 +30,9 @@ public class Player : MonoBehaviour
         fields.day = 1;
         fields.money = 1300;
         fields.status = null;
-        fields.money_display=GameObject.Find("Money").GetComponent<TextMeshPro>();
+        fields.money_display1=GameObject.Find("Money1").GetComponent<TextMeshPro>();
+        fields.money_display2 = GameObject.Find("Money2").GetComponent<TextMeshPro>();
+
     }
 
     // Update is called once per frame

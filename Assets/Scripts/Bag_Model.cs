@@ -17,8 +17,10 @@ public class Bag_Model : MonoBehaviour
     {
         GameObject.Find("Bag_Stock1").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.name);
         GameObject.Find("Bag_Stock1").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.amount.ToString());
-        GameObject.Find("Bag_Stock2").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.name);
-        GameObject.Find("Bag_Stock2").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.amount.ToString());
+        GameObject.Find("Bag_Stock3").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.name);
+        GameObject.Find("Bag_Stock3").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.amount.ToString());
+        GameObject.Find("Bag_Stock2").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.name);
+        GameObject.Find("Bag_Stock2").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.amount.ToString());
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

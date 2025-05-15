@@ -14,10 +14,11 @@ public class Message_Model : MonoBehaviour
     public static void AddMessage(string message, int amount)
     {
         var New_Message = GameObject.Instantiate(GameObject.Find("Message_Origin"));
-        New_Message.transform.SetParent(GameObject.Find("Message_Screen").transform, true);
+        New_Message.transform .SetParent(GameObject.Find("Message_Screen").transform, true);
         New_Message.GetComponent<TextMeshPro>().SetText(message);
-        var Pos_Rot = GameObject.Find("Message_Origin").GetComponent<Transform>();
-        New_Message.GetComponent<Transform>().SetPositionAndRotation(new Vector3(Pos_Rot.position.x,Pos_Rot.position.y-amount, Pos_Rot.position.z),new Quaternion(0,0,0,0));
+        var Pos_Rot = GameObject.Find("Message_Origin").GetComponent<RectTransform>();
+        New_Message.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(Pos_Rot.position.x,Pos_Rot.position.y-amount, Pos_Rot.position.z),new Quaternion(0,0,0,0));
+        //New_Message.GetComponent<RectTransform>().rect.Set(0,-0.332f, 81.9185f, 0.665f);
     }
 
 

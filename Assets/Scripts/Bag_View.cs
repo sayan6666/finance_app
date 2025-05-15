@@ -15,5 +15,6 @@ public class Bag_View : MonoBehaviour
     void Update()
     {
         Bag_Model.StocksSet();
+        Player.fields.money_display2.SetText(Player.fields.money.ToString());
     }
 }

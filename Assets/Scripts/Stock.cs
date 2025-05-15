@@ -8,7 +8,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class StockList
 {
     [XmlElement("Stock")]
-    public StockFields[] stocks = new StockFields[2];
+    public StockFields[] stocks = new StockFields[3];
 }
 
 [Serializable]
@@ -82,8 +82,8 @@ public class Stock : MonoBehaviour
             fields.input_handler_buy.Action = false;
             Player.fields.money = Player.fields.money - fields.price;
             fields.amount++;
-            Message_Model.AddMessage(fields.advice, scripte.messages);
-            scripte.messages++;
+            //Message_Model.AddMessage(fields.advice, scripte.messages);
+            //scripte.messages++;
             //scripte.Move_Button();
         }
         if (fields.input_handler_info1.Action /*&& !fields.input_handler_buy.Action*/)
@@ -102,6 +102,14 @@ public class Stock : MonoBehaviour
         }
     }
 
+    public void LastWeekAdvice()
+    {
+        if (fields.amount>0)
+        {
+            Message_Model.AddMessage(fields.advice, scripte.messages);
+            scripte.messages+=2;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
