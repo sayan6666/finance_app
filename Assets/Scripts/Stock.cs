@@ -55,9 +55,9 @@ public class StockFields
         stock_obj_name = stock_obj_c;
         this.advice = advice;
         input_handler_buy = GameObject.Find(stock_obj_name).transform.GetChild(2).GetComponent<Input_Handler>();
-        input_handler_sell = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(2).GetComponent<Input_Handler>();
+        input_handler_sell = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(4).GetComponent<Input_Handler>();
         input_handler_info1=  GameObject.Find(stock_obj_name).transform.GetChild(3).GetComponent<Input_Handler>();
-        input_handler_info2 = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(3).GetComponent<Input_Handler>();
+        input_handler_info2 = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(5).GetComponent<Input_Handler>();
     }
 }
 

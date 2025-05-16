@@ -34,7 +34,7 @@ public class Main_Controller : MonoBehaviour
         if (GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action)
         {
             GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action = false;
-            Wait_Model.StatsUpdate(new int[3] { 100, 80, 1});
+            Wait_Model.StatsUpdate(new int[3] { Random.Range(50,150), Random.Range(65, 100), Random.Range(1,10) });
            /* Main_Model.GreenTechSolutions.fields.price = 100;
             Main_Model.FashionWave.fields.price = 80;
             Main_Model.ToxicGoldInc.fields.price = 1;*/
