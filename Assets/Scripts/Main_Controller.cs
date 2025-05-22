@@ -34,7 +34,8 @@ public class Main_Controller : MonoBehaviour
         if (GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action)
         {
             GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action = false;
-            Wait_Model.StatsUpdate(new int[3] { Random.Range(50,150), Random.Range(65, 100), Random.Range(1,10) });
+            Wait_Model.StatsUpdate(new int[3] { Random.Range(News_Model.News[2].instanced ? 200 : 50, News_Model.News[2].instanced ? 500 : 150), Random.Range(65, 100), Random.Range(1,10) });
+            Player.fields.day++;
            /* Main_Model.GreenTechSolutions.fields.price = 100;
             Main_Model.FashionWave.fields.price = 80;
             Main_Model.ToxicGoldInc.fields.price = 1;*/
@@ -43,6 +44,11 @@ public class Main_Controller : MonoBehaviour
             Main_Model.ToxicGoldInc.LastWeekAdvice();
             Screen_Changer.Change_Screen(-1);
             Main_Model.timer = 0;
+        }
+        if (GameObject.Find("News_Button").GetComponent<Input_Handler>().Action==true)
+        {
+            GameObject.Find("News_Button").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(7);
         }
         if (Main_Model.timer >= 2f && GameObject.Find("Main Camera").transform.position.x == -7)
             Screen_Changer.Change_Screen(2);
