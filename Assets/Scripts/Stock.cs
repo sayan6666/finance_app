@@ -42,8 +42,10 @@ public class StockFields
     public Input_Handler input_handler_info2;
     [XmlElement("advice")]
     public string advice;
+    [XmlElement("verdict")]
+    public int verdict;
 
-    public StockFields(string name_c, string description_c, int price_c, int pe_c, int divs_c, int income_rise_c/*, int status_required_c*/, string stock_obj_c, string advice)
+    public StockFields(string name_c, string description_c, int price_c, int pe_c, int divs_c, int income_rise_c/*, int status_required_c*/, string stock_obj_c, string advice, int verdict)
     {
         name = name_c;
         description = description_c;
@@ -54,6 +56,7 @@ public class StockFields
         status_required = 0;
         stock_obj_name = stock_obj_c;
         this.advice = advice;
+        this.verdict = verdict;
         input_handler_buy = GameObject.Find(stock_obj_name).transform.GetChild(2).GetComponent<Input_Handler>();
         input_handler_sell = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(4).GetComponent<Input_Handler>();
         input_handler_info1=  GameObject.Find(stock_obj_name).transform.GetChild(3).GetComponent<Input_Handler>();
@@ -102,13 +105,16 @@ public class Stock : MonoBehaviour
         }
     }
 
-    public void LastWeekAdvice()
+    public bool LastWeekAdvice()
     {
         if (fields.amount>0)
         {
             Message_Model.AddMessage(fields.advice, scripte.messages);
             scripte.messages+=2;
-        }
+            Main_Model.verdict = fields.verdict;
+            return true;
+        } 
+        return false;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

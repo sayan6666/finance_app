@@ -6,6 +6,8 @@ public class Message_Model : MonoBehaviour
 {
     public static GameObject Next_Button;
     public static GameObject Exit_Button;
+    public static bool is_checked;
+
     public static void Buttons_Active()
     {
         Next_Button.SetActive(!Next_Button.activeSelf);
@@ -25,6 +27,7 @@ public class Message_Model : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        is_checked = true;
         Next_Button = GameObject.Find("Next_Button"); ;
         Exit_Button = GameObject.Find("Exit_Message_Button");
         AddMessage("Здравствуйте! Спасибо что решили воспользоваться моими услугами.",scripte.messages); 

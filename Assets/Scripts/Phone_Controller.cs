@@ -14,6 +14,7 @@ public class Phone_Controller : MonoBehaviour
         if (Phone_Model.Message_Action.Action)
         {
             Phone_Model.Message_Action.Action = false;
+            Message_Model.is_checked = true;
             Screen_Changer.Change_Screen(4);
         }
         if (Phone_Model.Task_Action.Action)
