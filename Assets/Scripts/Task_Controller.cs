@@ -16,5 +16,21 @@ public class Task_Controller : MonoBehaviour
             Task_Model.Exit_Action.Action = false;
             Screen_Changer.Change_Screen(3);
         }
+        if (GameObject.Find("TCB").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("TCB").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(2);
+        }
+        if (GameObject.Find("TNB").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("TNB").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(7);
+        }
+        if (GameObject.Find("TMB").GetComponent<Input_Handler>().Action)
+        {
+            Message_Model.is_checked = true;
+            GameObject.Find("TMB").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(4);
+        }
     }
 }

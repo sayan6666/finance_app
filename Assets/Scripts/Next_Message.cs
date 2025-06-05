@@ -23,7 +23,7 @@ public class scripte : MonoBehaviour
         if (Action)
         {
             Action = false;
-            Message_Model.AddMessage("advice",messages);
+            Message_Model.AddMessage("advice",4, "left", true);
             messages++;
             //Move_Button();
         }

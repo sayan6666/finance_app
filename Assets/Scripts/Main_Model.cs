@@ -16,6 +16,7 @@ public class Main_Model : MonoBehaviour
     public static Vector3 Screen_Position;
     public static float timer = 0;
     public static int verdict;
+    public static int stage = 1;
 
     public static void StockSet(GameObject obj, Stock stock)
     {

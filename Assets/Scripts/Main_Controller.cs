@@ -19,7 +19,8 @@ public class Main_Controller : MonoBehaviour
         Main_Model.FashionWave.Input_Check();
         if (GameObject.Find("Phone_Button").GetComponent<Input_Handler>().Action)
         {
-            Screen_Changer.Change_Screen(3);
+            Screen_Changer.Change_Screen(4);
+            Message_Model.is_checked = true;
             GameObject.Find("Phone_Button").GetComponent<Input_Handler>().Action=false;
             //Main_Model.Screen_Active();
         }
@@ -41,8 +42,6 @@ public class Main_Controller : MonoBehaviour
             Main_Model.ToxicGoldInc.fields.price = 1;*/
             if (!Main_Model.GreenTechSolutions.LastWeekAdvice() && !Main_Model.FashionWave.LastWeekAdvice() && !Main_Model.ToxicGoldInc.LastWeekAdvice())
                 Main_Model.verdict = 0;
-            else
-                Message_Model.is_checked = false;
             Screen_Changer.Change_Screen(-1);
             Main_Model.timer = 0;
         }
@@ -50,6 +49,16 @@ public class Main_Controller : MonoBehaviour
         {
             GameObject.Find("News_Button").GetComponent<Input_Handler>().Action = false;
             Screen_Changer.Change_Screen(7);
+        }
+        if (GameObject.Find("TBM").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("TBM").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(6);
+        }
+        if (GameObject.Find("SBM").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("SBM").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(3);
         }
         if (Main_Model.timer >= 2f && GameObject.Find("Main Camera").transform.position.x == -7)
             Screen_Changer.Change_Screen(2);

@@ -27,5 +27,10 @@ public class Phone_Controller : MonoBehaviour
             Phone_Model.Exit_Action.Action = false;
             Screen_Changer.Change_Screen(2);
         }
+        if (GameObject.Find("SNB").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("SNB").GetComponent<Input_Handler>().Action=false;
+            Screen_Changer.Change_Screen(7);
+        }
     }
 }

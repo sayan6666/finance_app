@@ -107,9 +107,9 @@ public class Stock : MonoBehaviour
 
     public bool LastWeekAdvice()
     {
-        if (fields.amount>0)
+        if (fields.amount>0 && Main_Model.stage==1 && Message_Model.dialogue[Message_Controller.message-1].Item3==3)
         {
-            Message_Model.AddMessage(fields.advice, scripte.messages);
+            Message_Model.AddMessage(fields.advice, 4, "left",false);
             scripte.messages+=2;
             Main_Model.verdict = fields.verdict;
             return true;
