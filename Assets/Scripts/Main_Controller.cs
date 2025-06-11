@@ -60,7 +60,7 @@ public class Main_Controller : MonoBehaviour
             GameObject.Find("SBM").GetComponent<Input_Handler>().Action = false;
             Screen_Changer.Change_Screen(3);
         }
-        if (Main_Model.timer >= 2f && GameObject.Find("Main Camera").transform.position.x == -7)
+        if (Main_Model.timer >= 2f && GameObject.Find("Main Camera").transform.position.x < -5)
             Screen_Changer.Change_Screen(2);
     }
 }
