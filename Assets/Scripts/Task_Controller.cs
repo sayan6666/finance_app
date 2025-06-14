@@ -32,5 +32,15 @@ public class Task_Controller : MonoBehaviour
             GameObject.Find("TMB").GetComponent<Input_Handler>().Action = false;
             Screen_Changer.Change_Screen(4);
         }
+        if (GameObject.Find("Task1").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("Task1").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(9);
+        }
+        if (GameObject.Find("Exit_TD_Button").GetComponent<Input_Handler>().Action)
+        {
+            GameObject.Find("Exit_TD_Button").GetComponent<Input_Handler>().Action = false;
+            Screen_Changer.Change_Screen(6);
+        }
     }
 }

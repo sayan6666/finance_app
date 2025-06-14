@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -11,7 +11,6 @@ public class Main_Model : MonoBehaviour
     public static GameObject assistant;
     public static Stock GreenTechSolutions, ToxicGoldInc, FashionWave;
     public static StockList Stock_List;
-    public static Player Player;
     public static GameObject Screen;
     public static Vector3 Screen_Position;
     public static float timer = 0;
@@ -21,10 +20,10 @@ public class Main_Model : MonoBehaviour
     public static void StockSet(GameObject obj, Stock stock)
     {
         obj.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(stock.fields.name);
-        obj.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(stock.fields.price+"$");
+        obj.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(stock.fields.price+ "в‚Ѕ");
         /*obj.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText("P/E:"+stock.fields.pe);
-        obj.transform.GetChild(3).gameObject.GetComponent<TextMeshPro>().SetText("Див. доход:"+stock.fields.divs+"%");
-        obj.transform.GetChild(4).gameObject.GetComponent<TextMeshPro>().SetText("Рост\nприбыли:"+stock.fields.income_rise+"%");*/
+        obj.transform.GetChild(3).gameObject.GetComponent<TextMeshPro>().SetText("Р”РёРІ. РґРѕС…РѕРґ:"+stock.fields.divs+"%");
+        obj.transform.GetChild(4).gameObject.GetComponent<TextMeshPro>().SetText("Р РѕСЃС‚\nРїСЂРёР±С‹Р»Рё:"+stock.fields.income_rise+"%");*/
     }
 
     public static void Screen_Active()
@@ -42,28 +41,48 @@ public class Main_Model : MonoBehaviour
         serializer = new Serializer();
         Stock_List = new StockList();
         Screen_Position = Screen.transform.position;
-        Player = GameObject.Find("Player").GetComponent<Player>();
         assistant = GameObject.Find("NMP");
         verdict = 0;
 
-        Stock_List.stocks[0]= new StockFields("GreenTech Solutions", "Компания, занимающаяся разработкой экологически чистых технологий и альтернативных источников энергии. Недавно они заключили контракт с крупным международным партнером, что может значительно увеличить доходы в будущем. Прогноз роста доходов на следующий год — 20%.", 50, 15, 4, 25, "Stock1", "Отличный выбор! Низкий P/E, высокий рост прибыли и дивиденды — идеально для долгосрочного портфеля. Эта компания явно недооценена!", 1);
+        Stock_List.stocks[0]= new StockFields("GreenTech Solutions", "РљРѕРјРїР°РЅРёСЏ, Р·Р°РЅРёРјР°СЋС‰Р°СЏСЃСЏ СЂР°Р·СЂР°Р±РѕС‚РєРѕР№ СЌРєРѕР»РѕРіРёС‡РµСЃРєРё С‡РёСЃС‚С‹С… С‚РµС…РЅРѕР»РѕРіРёР№ Рё Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅС‹С… РёСЃС‚РѕС‡РЅРёРєРѕРІ СЌРЅРµСЂРіРёРё. РќРµРґР°РІРЅРѕ РѕРЅРё Р·Р°РєР»СЋС‡РёР»Рё РєРѕРЅС‚СЂР°РєС‚ СЃ РєСЂСѓРїРЅС‹Рј РјРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рј РїР°СЂС‚РЅРµСЂРѕРј, С‡С‚Рѕ РјРѕР¶РµС‚ Р·РЅР°С‡РёС‚РµР»СЊРЅРѕ СѓРІРµР»РёС‡РёС‚СЊ РґРѕС…РѕРґС‹ РІ Р±СѓРґСѓС‰РµРј. РџСЂРѕРіРЅРѕР· СЂРѕСЃС‚Р° РґРѕС…РѕРґРѕРІ РЅР° СЃР»РµРґСѓСЋС‰РёР№ РіРѕРґ вЂ” 20%.", 4000, 15, 4, 25, "Stock1", "РћС‚Р»РёС‡РЅС‹Р№ РІС‹Р±РѕСЂ! РќРёР·РєРёР№ P/E, РІС‹СЃРѕРєРёР№ СЂРѕСЃС‚ РїСЂРёР±С‹Р»Рё Рё РґРёРІРёРґРµРЅРґС‹ вЂ” РёРґРµР°Р»СЊРЅРѕ РґР»СЏ РґРѕР»РіРѕСЃСЂРѕС‡РЅРѕРіРѕ РїРѕСЂС‚С„РµР»СЏ. Р­С‚Р° РєРѕРјРїР°РЅРёСЏ СЏРІРЅРѕ РЅРµРґРѕРѕС†РµРЅРµРЅР°!", 1);
         GameObject.Find("Stock").GetComponents<Stock>()[0].fields = Stock_List.stocks[0];
         GreenTechSolutions = GameObject.Find("Stock").GetComponents<Stock>()[0];
-        StockSet(GameObject.Find(GreenTechSolutions.fields.stock_obj_name), GreenTechSolutions);
-
-        Stock_List.stocks[1] = new StockFields("FashionWave", "Компания производит модную одежду и аксессуары. В последнее время наблюдается стабилизация доходов, однако рынок становится всё более конкурентным. Хотя спрос на продукцию остаётся, компания сталкивается с трудностями в снижении издержек. Неопределённость относительно дальнейшего роста", 75, 30, 2, 5, "Stock2", "Неплохо, но P/E высоковат для такого умеренного роста. Возможно, есть более выгодные варианты. Советую сравнить с другими акциями.", 0);
+        
+        Stock_List.stocks[1] = new StockFields("FashionWave", "РљРѕРјРїР°РЅРёСЏ РїСЂРѕРёР·РІРѕРґРёС‚ РјРѕРґРЅСѓСЋ РѕРґРµР¶РґСѓ Рё Р°РєСЃРµСЃСЃСѓР°СЂС‹. Р’ РїРѕСЃР»РµРґРЅРµРµ РІСЂРµРјСЏ РЅР°Р±Р»СЋРґР°РµС‚СЃСЏ СЃС‚Р°Р±РёР»РёР·Р°С†РёСЏ РґРѕС…РѕРґРѕРІ, РѕРґРЅР°РєРѕ СЂС‹РЅРѕРє СЃС‚Р°РЅРѕРІРёС‚СЃСЏ РІСЃС‘ Р±РѕР»РµРµ РєРѕРЅРєСѓСЂРµРЅС‚РЅС‹Рј. РҐРѕС‚СЏ СЃРїСЂРѕСЃ РЅР° РїСЂРѕРґСѓРєС†РёСЋ РѕСЃС‚Р°С‘С‚СЃСЏ, РєРѕРјРїР°РЅРёСЏ СЃС‚Р°Р»РєРёРІР°РµС‚СЃСЏ СЃ С‚СЂСѓРґРЅРѕСЃС‚СЏРјРё РІ СЃРЅРёР¶РµРЅРёРё РёР·РґРµСЂР¶РµРє. РќРµРѕРїСЂРµРґРµР»С‘РЅРЅРѕСЃС‚СЊ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РґР°Р»СЊРЅРµР№С€РµРіРѕ СЂРѕСЃС‚Р°", 6000, 30, 2, 5, "Stock2", "РќРµРїР»РѕС…Рѕ, РЅРѕ P/E РІС‹СЃРѕРєРѕРІР°С‚ РґР»СЏ С‚Р°РєРѕРіРѕ СѓРјРµСЂРµРЅРЅРѕРіРѕ СЂРѕСЃС‚Р°. Р’РѕР·РјРѕР¶РЅРѕ, РµСЃС‚СЊ Р±РѕР»РµРµ РІС‹РіРѕРґРЅС‹Рµ РІР°СЂРёР°РЅС‚С‹. РЎРѕРІРµС‚СѓСЋ СЃСЂР°РІРЅРёС‚СЊ СЃ РґСЂСѓРіРёРјРё Р°РєС†РёСЏРјРё.", 0);
         GameObject.Find("Stock").GetComponents<Stock>()[1].fields = Stock_List.stocks[1];
         FashionWave = GameObject.Find("Stock").GetComponents<Stock>()[1];
-        StockSet(GameObject.Find(FashionWave.fields.stock_obj_name), FashionWave);
-
-        Stock_List.stocks[2] = new StockFields("ToxicGoldInc", "Компания занимается добычей и переработкой нефти. Однако она столкнулась с серьёзными экологическими и юридическими проблемами, её запасы истощаются, а долговая нагрузка колоссальна. Инвесторы начинают массово продавать акции. Прогнозы на будущее крайне пессимистичны.", 5, -15, 0, -50, "Stock3", "Очень рискованно! У компании отрицательная прибыль и нет дивидендов. Такой выбор может привести к большим потерям. Давай попробуем ещё раз?", -1);
+       
+        Stock_List.stocks[2] = new StockFields("ToxicGoldInc", "РљРѕРјРїР°РЅРёСЏ Р·Р°РЅРёРјР°РµС‚СЃСЏ РґРѕР±С‹С‡РµР№ Рё РїРµСЂРµСЂР°Р±РѕС‚РєРѕР№ РЅРµС„С‚Рё. РћРґРЅР°РєРѕ РѕРЅР° СЃС‚РѕР»РєРЅСѓР»Р°СЃСЊ СЃ СЃРµСЂСЊС‘Р·РЅС‹РјРё СЌРєРѕР»РѕРіРёС‡РµСЃРєРёРјРё Рё СЋСЂРёРґРёС‡РµСЃРєРёРјРё РїСЂРѕР±Р»РµРјР°РјРё, РµС‘ Р·Р°РїР°СЃС‹ РёСЃС‚РѕС‰Р°СЋС‚СЃСЏ, Р° РґРѕР»РіРѕРІР°СЏ РЅР°РіСЂСѓР·РєР° РєРѕР»РѕСЃСЃР°Р»СЊРЅР°. РРЅРІРµСЃС‚РѕСЂС‹ РЅР°С‡РёРЅР°СЋС‚ РјР°СЃСЃРѕРІРѕ РїСЂРѕРґР°РІР°С‚СЊ Р°РєС†РёРё. РџСЂРѕРіРЅРѕР·С‹ РЅР° Р±СѓРґСѓС‰РµРµ РєСЂР°Р№РЅРµ РїРµСЃСЃРёРјРёСЃС‚РёС‡РЅС‹.", 400, -15, 0, -50, "Stock3", "РћС‡РµРЅСЊ СЂРёСЃРєРѕРІР°РЅРЅРѕ! РЈ РєРѕРјРїР°РЅРёРё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅР°СЏ РїСЂРёР±С‹Р»СЊ Рё РЅРµС‚ РґРёРІРёРґРµРЅРґРѕРІ. РўР°РєРѕР№ РІС‹Р±РѕСЂ РјРѕР¶РµС‚ РїСЂРёРІРµСЃС‚Рё Рє Р±РѕР»СЊС€РёРј РїРѕС‚РµСЂСЏРј. Р”Р°РІР°Р№ РїРѕРїСЂРѕР±СѓРµРј РµС‰С‘ СЂР°Р·?", -1);
         GameObject.Find("Stock").GetComponents<Stock>()[2].fields = Stock_List.stocks[2];
         ToxicGoldInc = GameObject.Find("Stock").GetComponents<Stock>()[2];
-        StockSet(GameObject.Find(ToxicGoldInc.fields.stock_obj_name), ToxicGoldInc);
 
-        Stock_List.stocks[0] = GreenTechSolutions.fields;
-        Stock_List.stocks[1] = FashionWave.fields;
-        Stock_List.stocks[2]=ToxicGoldInc.fields;
+        DB_Handler.Establish_Connection();
+
+       /* if (DB_Handler.first_launch)
+        { DB_Handler.Create_DataBase();
+
+        DB_Handler.Insert_Stock(Stock_List.stocks[0]);
+        DB_Handler.Insert_Stock(Stock_List.stocks[1]);
+        DB_Handler.Insert_Stock(Stock_List.stocks[2]);
+        DB_Handler.connection.Insert(Player.fields);}*/
+        
+        Player.fields=DB_Handler.Retrieve_Player();
+        Player.Retrieve_Obj();
+        for (int i = 0; i < Stock_List.stocks.Length; i++)
+        {
+            Stock_List.stocks[i] = DB_Handler.Retrieve_Stock(i+1);
+            Stock_List.stocks[i].Retrieve_Obj();
+        }
+        GreenTechSolutions.fields = DB_Handler.Retrieve_Stock(1);
+        GreenTechSolutions.fields.Retrieve_Obj();
+        FashionWave.fields = DB_Handler.Retrieve_Stock(2);
+        FashionWave.fields.Retrieve_Obj();
+        ToxicGoldInc.fields = DB_Handler.Retrieve_Stock(3);
+        ToxicGoldInc.fields.Retrieve_Obj();
+
+        StockSet(GameObject.Find(GreenTechSolutions.fields.stock_obj_name), GreenTechSolutions);
+        StockSet(GameObject.Find(FashionWave.fields.stock_obj_name), FashionWave);
+        StockSet(GameObject.Find(ToxicGoldInc.fields.stock_obj_name), ToxicGoldInc);
     }
 
     // Update is called once per frame
@@ -72,8 +91,9 @@ public class Main_Model : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             Debug.Log("+");
-            serializer.Serialize(Stock_List, "stocklist.xml");
-            serializer.Serialize(Player.fields, "player.xml");     
+            /*serializer.Serialize(Stock_List, "stocklist.xml");
+            serializer.Serialize(Player.fields, "player.xml");*/
+            
         }
         if (Input.GetKeyDown(KeyCode.O))
         {

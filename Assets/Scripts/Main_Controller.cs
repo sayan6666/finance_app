@@ -35,15 +35,26 @@ public class Main_Controller : MonoBehaviour
         if (GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action)
         {
             GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action = false;
-            Wait_Model.StatsUpdate(new int[3] { Random.Range(News_Model.News[2].instanced ? 200 : 50, News_Model.News[2].instanced ? 500 : 150), Random.Range(65, 100), Random.Range(1,10) });
+            Wait_Model.StatsUpdate(new int[3] { Random.Range(News_Model.News[2].instanced ? 20000 : 4000, News_Model.News[2].instanced ? 20000 : 9900), Random.Range(4500, 9600), Random.Range(100,800) });
             Player.fields.day++;
-           /* Main_Model.GreenTechSolutions.fields.price = 100;
-            Main_Model.FashionWave.fields.price = 80;
-            Main_Model.ToxicGoldInc.fields.price = 1;*/
-            if (!Main_Model.GreenTechSolutions.LastWeekAdvice() && !Main_Model.FashionWave.LastWeekAdvice() && !Main_Model.ToxicGoldInc.LastWeekAdvice())
-                Main_Model.verdict = 0;
+            /* Main_Model.GreenTechSolutions.fields.price = 100;
+             Main_Model.FashionWave.fields.price = 80;
+             Main_Model.ToxicGoldInc.fields.price = 1;*/
+            if (Task_Model.marked[0] == 0)
+            {
+                if (!Main_Model.GreenTechSolutions.LastWeekAdvice() && !Main_Model.FashionWave.LastWeekAdvice() && !Main_Model.ToxicGoldInc.LastWeekAdvice())
+                    Main_Model.verdict = 0;
+                else
+                { Task_Model.marked[0] = 1; }
+            }
             Screen_Changer.Change_Screen(-1);
             Main_Model.timer = 0;
+            DB_Handler.Update_Player(Player.fields);
+            /*for (int i = 0; i < Main_Model.Stock_List.stocks.Length; i++)
+                DB_Handler.Update_Stock(Main_Model.Stock_List.stocks[i]);*/
+            DB_Handler.Update_Stock(Main_Model.GreenTechSolutions.fields/*Stock_List.stocks[0]*/);
+            DB_Handler.Update_Stock(Main_Model.FashionWave.fields);
+            DB_Handler.Update_Stock(Main_Model.ToxicGoldInc.fields);
         }
         if (GameObject.Find("News_Button").GetComponent<Input_Handler>().Action==true)
         {

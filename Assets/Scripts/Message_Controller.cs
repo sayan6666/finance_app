@@ -19,31 +19,70 @@ public class Message_Controller : MonoBehaviour
             Message_Model.Buttons_Active();
             flag = true;
         }*/
-        if (Message_Model.dialogue[message-1].Item3==0 && GameObject.Find("Next_Button").GetComponent<Input_Handler>().Action)
+        if (Message_Model.dialogue[message-1].type==0 && GameObject.Find("Next_Button").GetComponent<Input_Handler>().Action)
         {
             GameObject.Find("Next_Button").GetComponent<Input_Handler>().Action=false;
-            Message_Model.AddMessage(Message_Model.dialogue[message].Item1,4, Message_Model.dialogue[message].Item2, true);
+            Message_Model.AddMessage(Message_Model.dialogue[message].text,4, Message_Model.dialogue[message].side, true);
             message++;
         }
         timer+=Time.deltaTime;
-        if (Message_Model.dialogue[message - 1].Item3 != 1)
+        if (Message_Model.dialogue[message - 1].type != 1)
             timer = 0;
-        if (timer>=3 && Message_Model.dialogue[message-1].Item3 == 1)
+        Debug.Log(message);
+        if (timer>=3 && Message_Model.dialogue[message-1].type == 1)
         {
-            Message_Model.AddMessage(Message_Model.dialogue[message].Item1, 4, Message_Model.dialogue[message].Item2, true);
+            Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
             message++;
             timer = 0;
+        }
+        if (Message_Model.dialogue[message-1].type==2)
+        {
+            if (GameObject.Find("a").GetComponent<Input_Handler>().Action)
+            {
+                GameObject.Find("a").GetComponent<Input_Handler>().Action = false;
+            }
+            if (GameObject.Find("b").GetComponent<Input_Handler>().Action)
+            {
+                if (message + 1 == 20 || message + 1 == 22 || message + 1 == 26)
+                {
+                    Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
+                    message++;
+                }
+                GameObject.Find("b").GetComponent<Input_Handler>().Action=false;
+            }
+            if (GameObject.Find("c").GetComponent<Input_Handler>().Action)
+            {
+                if (message + 1 == 24)
+                {
+                    Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
+                    message++;
+                }
+                GameObject.Find("c").GetComponent<Input_Handler>().Action = false;
+            }
+            if (GameObject.Find("d").GetComponent<Input_Handler>().Action)
+            {
+                GameObject.Find("d").GetComponent<Input_Handler>().Action = false;
+            }
+        }
+        if (Message_Model.dialogue[message-1].type==3 && Task_Model.marked[0]==1 && message==18)
+        {
+            Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, false);
+            message++;
         }
 
         if (GameObject.Find("scroll").transform.GetChild(1).GetComponent<Input_Handler>().Action)
         {
             var py = GameObject.Find("Message_Origin").transform.localPosition.y;
-            GameObject.Find("Message_Origin").transform.SetLocalPositionAndRotation(new Vector3(GameObject.Find("Message_Origin").transform.localPosition.x,py+2, GameObject.Find("Message_Origin").transform.position.z),new Quaternion(0,0,0,0));
+            GameObject.Find("Message_Origin").transform.SetLocalPositionAndRotation(new Vector3(GameObject.Find("Message_Origin").transform.localPosition.x,py+2, 0),new Quaternion(0,0,0,0));
+            var py1 = GameObject.Find("Messages").transform.localPosition.y;
+            GameObject.Find("Messages").transform.SetLocalPositionAndRotation(new Vector3(GameObject.Find("Messages").transform.localPosition.x, py1 + 2, 0), new Quaternion(0, 0, 0, 0));
         }
         if (GameObject.Find("scroll").transform.GetChild(0).GetComponent<Input_Handler>().Action)
         {
             var py = GameObject.Find("Message_Origin").transform.localPosition.y;
-            GameObject.Find("Message_Origin").transform.SetLocalPositionAndRotation(new Vector3(GameObject.Find("Message_Origin").transform.localPosition.x, py - 2, GameObject.Find("Message_Origin").transform.position.z), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Message_Origin").transform.SetLocalPositionAndRotation(new Vector3(GameObject.Find("Message_Origin").transform.localPosition.x, py - 2, 0), new Quaternion(0, 0, 0, 0));
+            var py1 = GameObject.Find("Messages").transform.localPosition.y;
+            GameObject.Find("Messages").transform.SetLocalPositionAndRotation(new Vector3(GameObject.Find("Messages").transform.localPosition.x, py1 - 2, 0), new Quaternion(0, 0, 0, 0));
         }
 
         if (GameObject.Find("Exit_Message_Button").GetComponent<Input_Handler>().Action)
@@ -73,5 +112,6 @@ public class Message_Controller : MonoBehaviour
         }
         GameObject.Find("scroll").transform.GetChild(0).GetComponent<Input_Handler>().Action = false;
         GameObject.Find("scroll").transform.GetChild(1).GetComponent<Input_Handler>().Action = false;
+        Player.fields.last_message = message;
     }
 }

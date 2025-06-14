@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -11,12 +11,12 @@ public class Wait_Model : MonoBehaviour
         {
             if (price[i] - Main_Model.Stock_List.stocks[i].price > 0)
             {
-                GameObject.Find("Bag_Stock" + (i + 1).ToString()).transform.GetChild(3).GetComponent<TextMeshPro>().SetText("+"+(Math.Abs(price[i] - Main_Model.Stock_List.stocks[i].price)).ToString()+"$");
+                GameObject.Find("Bag_Stock" + (i + 1).ToString()).transform.GetChild(3).GetComponent<TextMeshPro>().SetText("+"+(Math.Abs(price[i] - Main_Model.Stock_List.stocks[i].price)).ToString()+ "₽");
                 GameObject.Find("Bag_Stock" + (i + 1).ToString()).transform.GetChild(3).GetComponent<TextMeshPro>().color = Color.green;
             }
             else
             {
-                GameObject.Find("Bag_Stock" + (i + 1).ToString()).transform.GetChild(3).GetComponent<TextMeshPro>().SetText("-" + (Math.Abs(price[i] - Main_Model.Stock_List.stocks[i].price)).ToString() + "$");
+                GameObject.Find("Bag_Stock" + (i + 1).ToString()).transform.GetChild(3).GetComponent<TextMeshPro>().SetText("-" + (Math.Abs(price[i] - Main_Model.Stock_List.stocks[i].price)).ToString() + "₽");
                 GameObject.Find("Bag_Stock" + (i + 1).ToString()).transform.GetChild(3).GetComponent<TextMeshPro>().color = Color.red;
             }
         }

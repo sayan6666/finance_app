@@ -1,49 +1,52 @@
 using System;
-using System.Xml.Serialization;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
+using SQLite4Unity3d;
 
-[Serializable]
-[XmlRoot("StockList")]
 public class StockList
 {
-    [XmlElement("Stock")]
     public StockFields[] stocks = new StockFields[3];
 }
 
-[Serializable]
+[Table("Stocks")]
 public class StockFields
 {
-    [XmlElement("name")]
+    public StockFields() { }
+    [PrimaryKey, AutoIncrement]
+    [Column("id")]
+    public int id { get; set; }
+    [Column("name")]
     public string name { get; set; }
-    [XmlElement("description")]
+    [Column("description")]
     public string description { get; set; }
-    [XmlElement("price")]
+    [Column("price")]
     public int price { get; set; }
-    [XmlElement("pe")]
+    [Column("pe")]
     public int pe { get; set; }
-    [XmlElement("divs")]
+    [Column("divs")]
     public int divs { get; set; }
-    [XmlElement("income_rise")]
+    [Column("income_rise")]
     public int income_rise { get; set; }
-    [XmlElement("status_required")]
+    [Ignore]
     public int status_required { get; set; }
-    [XmlElement("amount")]
-    public int amount = 0;
-    [XmlElement("stock_obj")]
-    public string stock_obj_name;
-    [XmlIgnore]
-    public Input_Handler input_handler_buy;
-    [XmlIgnore]
-    public Input_Handler input_handler_sell;
-    [XmlIgnore]
-    public Input_Handler input_handler_info1;
-    [XmlIgnore]
-    public Input_Handler input_handler_info2;
-    [XmlElement("advice")]
-    public string advice;
-    [XmlElement("verdict")]
-    public int verdict;
+    [Column("amount")]
+    public int amount { get; set; } = 0;
+    [Column("stock_obj_name")]
+    public string stock_obj_name { get; set; }
+    [Ignore]
+    public Input_Handler input_handler_buy { get; set; }
+    [Ignore]
+    public Input_Handler input_handler_sell { get; set; }
+    [Ignore]
+    public Input_Handler input_handler_info1 { get; set; }
+    [Ignore]
+    public Input_Handler input_handler_info2 { get; set; }
+    [Column("advice")]
+    public string advice { get; set; }
+    [Column("verdict")]
+    public int verdict { get; set; }
+    [Column("price_diff")]
+    public int price_diff { get; set; }
 
     public StockFields(string name_c, string description_c, int price_c, int pe_c, int divs_c, int income_rise_c/*, int status_required_c*/, string stock_obj_c, string advice, int verdict)
     {
@@ -57,9 +60,15 @@ public class StockFields
         stock_obj_name = stock_obj_c;
         this.advice = advice;
         this.verdict = verdict;
+        price_diff = 0;
+        Retrieve_Obj();
+    }
+
+    public void Retrieve_Obj()
+    {
         input_handler_buy = GameObject.Find(stock_obj_name).transform.GetChild(2).GetComponent<Input_Handler>();
         input_handler_sell = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(4).GetComponent<Input_Handler>();
-        input_handler_info1=  GameObject.Find(stock_obj_name).transform.GetChild(3).GetComponent<Input_Handler>();
+        input_handler_info1 = GameObject.Find(stock_obj_name).transform.GetChild(3).GetComponent<Input_Handler>();
         input_handler_info2 = GameObject.Find("Bag_" + stock_obj_name).transform.GetChild(5).GetComponent<Input_Handler>();
     }
 }
@@ -70,7 +79,7 @@ public class Stock : MonoBehaviour
     public StockFields fields;
 
     public Stock() { }
-
+   
     public void Input_Check()
     {
         //Debug.Log(Player.money);
@@ -107,7 +116,7 @@ public class Stock : MonoBehaviour
 
     public bool LastWeekAdvice()
     {
-        if (fields.amount>0 && Main_Model.stage==1 && Message_Model.dialogue[Message_Controller.message-1].Item3==3)
+        if (fields.amount>0 && Main_Model.stage==1 && Message_Model.dialogue[Message_Controller.message-1].type ==3)
         {
             Message_Model.AddMessage(fields.advice, 4, "left",false);
             scripte.messages+=2;

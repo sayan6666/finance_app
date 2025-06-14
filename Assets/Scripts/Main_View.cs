@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +8,9 @@ public class Main_View : MonoBehaviour
     public Sprite sprite_normal;
     public Sprite sprite_happy;
     public Sprite sprite_sad;
+    public Sprite sprite_normal_cut;
+    public Sprite sprite_happy_cut;
+    public Sprite sprite_sad_cut;
     public void Phone_Screen_Active()
     {
         /*GameObject.Find("Main_Screen").SetActive(false);
@@ -24,10 +27,10 @@ public class Main_View : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Player.fields.money_display1.SetText(Player.fields.money.ToString());
+        Player.fields.money_display1.SetText(Player.fields.money.ToString()+ "₽");
         if (!Message_Model.is_checked)
         {
-            Main_Model.assistant.transform.SetLocalPositionAndRotation(new Vector3(Main_Model.assistant.transform.localPosition.x, -1.5f, Main_Model.assistant.transform.localPosition.z), new Quaternion(0,0,0,0));
+            Main_Model.assistant.transform.SetLocalPositionAndRotation(new Vector3(Main_Model.assistant.transform.localPosition.x, -0.6f, Main_Model.assistant.transform.localPosition.z), new Quaternion(0,0,0,0));
         }
         else
             Main_Model.assistant.transform.SetLocalPositionAndRotation(new Vector3(Main_Model.assistant.transform.localPosition.x, -3.5f, Main_Model.assistant.transform.localPosition.z), new Quaternion(0, 0, 0, 0));
@@ -35,17 +38,17 @@ public class Main_View : MonoBehaviour
         {
             case 0:
                 {
-                    Main_Model.assistant.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite_normal;
+                    Main_Model.assistant.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite_normal_cut;
                     break;
                 }
             case 1:
                 {
-                    Main_Model.assistant.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite_happy;
+                    Main_Model.assistant.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite_happy_cut;
                     break;
                 }
             case -1:
                 {
-                    Main_Model.assistant.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite_sad;
+                    Main_Model.assistant.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite_sad_cut;
                     break;
                 }
         }

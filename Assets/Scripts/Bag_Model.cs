@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,14 +16,14 @@ public class Bag_Model : MonoBehaviour
     public static void StocksSet()
     {
         GameObject.Find("Bag_Stock1").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.name);
-        GameObject.Find("Bag_Stock1").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.amount.ToString()+" øò.");
-        GameObject.Find("Bag_Stock1").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.price.ToString()+"$");
+        GameObject.Find("Bag_Stock1").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.amount.ToString()+" ÑˆÑ‚.");
+        GameObject.Find("Bag_Stock1").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenTechSolutions.fields.price.ToString()+ "â‚½");
         GameObject.Find("Bag_Stock3").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.name);
-        GameObject.Find("Bag_Stock3").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.amount.ToString() + " øò.");
-        GameObject.Find("Bag_Stock3").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.price.ToString() + "$");
+        GameObject.Find("Bag_Stock3").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.amount.ToString() + " ÑˆÑ‚.");
+        GameObject.Find("Bag_Stock3").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.ToxicGoldInc.fields.price.ToString() + "â‚½");
         GameObject.Find("Bag_Stock2").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.name);
-        GameObject.Find("Bag_Stock2").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.amount.ToString() + " øò.");
-        GameObject.Find("Bag_Stock2").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.price.ToString() + "$");
+        GameObject.Find("Bag_Stock2").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.amount.ToString() + " ÑˆÑ‚.");
+        GameObject.Find("Bag_Stock2").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.price.ToString() + "â‚½");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
