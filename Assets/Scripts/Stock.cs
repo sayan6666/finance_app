@@ -5,7 +5,7 @@ using SQLite4Unity3d;
 
 public class StockList
 {
-    public StockFields[] stocks = new StockFields[3];
+    public StockFields[] stocks = new StockFields[6];
 }
 
 [Table("Stocks")]

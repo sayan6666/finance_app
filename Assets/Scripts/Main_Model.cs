@@ -9,7 +9,7 @@ public class Main_Model : MonoBehaviour
     public KeyDownEvent e;
     public Serializer serializer;
     public static GameObject assistant;
-    public static Stock GreenTechSolutions, ToxicGoldInc, FashionWave;
+    public static Stock GreenTechSolutions, ToxicGoldInc, FashionWave, TechNova, GreenPower, SafeBank;
     public static StockList Stock_List;
     public static GameObject Screen;
     public static Vector3 Screen_Position;
@@ -56,6 +56,10 @@ public class Main_Model : MonoBehaviour
         GameObject.Find("Stock").GetComponents<Stock>()[2].fields = Stock_List.stocks[2];
         ToxicGoldInc = GameObject.Find("Stock").GetComponents<Stock>()[2];
 
+        TechNova = GameObject.Find("Stock").GetComponents<Stock>()[3];
+        GreenPower = GameObject.Find("Stock").GetComponents<Stock>()[4];
+        SafeBank = GameObject.Find("Stock").GetComponents<Stock>()[5];
+
         DB_Handler.Establish_Connection();
 
        /* if (DB_Handler.first_launch)
@@ -79,10 +83,19 @@ public class Main_Model : MonoBehaviour
         FashionWave.fields.Retrieve_Obj();
         ToxicGoldInc.fields = DB_Handler.Retrieve_Stock(3);
         ToxicGoldInc.fields.Retrieve_Obj();
+        TechNova.fields=DB_Handler.Retrieve_Stock(4);
+        TechNova.fields.Retrieve_Obj();
+        GreenPower.fields = DB_Handler.Retrieve_Stock(5);
+        GreenPower.fields.Retrieve_Obj();
+        SafeBank.fields = DB_Handler.Retrieve_Stock(6);
+        SafeBank.fields.Retrieve_Obj();
 
         StockSet(GameObject.Find(GreenTechSolutions.fields.stock_obj_name), GreenTechSolutions);
         StockSet(GameObject.Find(FashionWave.fields.stock_obj_name), FashionWave);
         StockSet(GameObject.Find(ToxicGoldInc.fields.stock_obj_name), ToxicGoldInc);
+        StockSet(GameObject.Find(TechNova.fields.stock_obj_name), TechNova);
+        StockSet(GameObject.Find(GreenPower.fields.stock_obj_name), GreenPower);
+        StockSet(GameObject.Find(SafeBank.fields.stock_obj_name), SafeBank);
     }
 
     // Update is called once per frame

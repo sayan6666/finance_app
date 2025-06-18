@@ -11,6 +11,9 @@ public class Main_View : MonoBehaviour
     public Sprite sprite_normal_cut;
     public Sprite sprite_happy_cut;
     public Sprite sprite_sad_cut;
+    public Sprite investor;
+    public Sprite expert;
+
     public void Phone_Screen_Active()
     {
         /*GameObject.Find("Main_Screen").SetActive(false);
@@ -49,6 +52,24 @@ public class Main_View : MonoBehaviour
             case -1:
                 {
                     Main_Model.assistant.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite_sad_cut;
+                    break;
+                }
+        }
+        switch(Player.fields.status)
+        {
+            case 1:
+                {
+                    GameObject.Find("Status_Overlay_Main").GetComponent<SpriteRenderer>().sprite = null;
+                    break;
+                }
+            case 2:
+                {
+                    GameObject.Find("Status_Overlay_Main").GetComponent<SpriteRenderer>().sprite = investor;
+                    break;
+                }
+            case 3:
+                {
+                    GameObject.Find("Status_Overlay_Main").GetComponent<SpriteRenderer>().sprite = expert;
                     break;
                 }
         }

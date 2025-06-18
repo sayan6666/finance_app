@@ -28,7 +28,7 @@ public class Message_Model : MonoBehaviour
     public static GameObject Exit_Button;
     public static bool is_checked;
     public static List<Message> dialogue;
-    public static float prev_height;
+    public static double prev_height;
 
     public static void Buttons_Active()
     {
@@ -50,7 +50,7 @@ public class Message_Model : MonoBehaviour
         }
         if (amount != 0 && align == "left")
         {
-            New_Avatar = GameObject.Instantiate(GameObject.Find("Messages").transform.GetChild(GameObject.Find("Messages").transform.childCount-1));
+            New_Avatar = GameObject.Instantiate(GameObject.Find("Messages").transform.GetChild(0));
             New_Avatar.transform.SetParent(GameObject.Find("Messages").transform);
             New_Avatar.transform.localScale = Vector3.one;
             New_Avatar.name = "Assistant";
@@ -80,7 +80,7 @@ public class Message_Model : MonoBehaviour
     3 - конец*/
     public void CreateDialogue()
     {
-        for (int i = 1; i < 27; i++)
+        for (int i = 1; i < 45; i++)
             dialogue.Add(DB_Handler.connection.Table<Message>().Where(t => t.id==i).FirstOrDefault());
     }
 
@@ -89,8 +89,8 @@ public class Message_Model : MonoBehaviour
     {
         if (dialogue[Message_Controller.message - 1].side == "left")
         {
-            float y = -(prev_height + ((GameObject.Find("Message_Origin").GetComponent<RectTransform>().rect.height - prev_height) / 2f));
-            GameObject.Find("Messages").transform.GetChild(GameObject.Find("Messages").transform.childCount - 1).transform.SetLocalPositionAndRotation(new Vector3(-2.546351f, y, 0), new Quaternion(0, 0, 0, 0));
+            double y = -(prev_height + (((double)GameObject.Find("Message_Origin").GetComponent<RectTransform>().rect.height - prev_height) / 2d));
+            GameObject.Find("Messages").transform.GetChild(GameObject.Find("Messages").transform.childCount - 1).transform.SetLocalPositionAndRotation(new Vector3(-2.546351f, (float)y, 0), new Quaternion(0, 0, 0, 0));
         }
     }
 }

@@ -7,7 +7,7 @@ public class Wait_Model : MonoBehaviour
 {
     public static void StatsUpdate(int[] price)
     {
-        for (int i = 0;i<3;i++)
+        for (int i = 0;i<6;i++)
         {
             if (price[i] - Main_Model.Stock_List.stocks[i].price > 0)
             {
@@ -26,6 +26,12 @@ public class Wait_Model : MonoBehaviour
         Main_Model.StockSet(GameObject.Find(Main_Model.GreenTechSolutions.fields.stock_obj_name), Main_Model.GreenTechSolutions);
         Main_Model.StockSet(GameObject.Find(Main_Model.FashionWave.fields.stock_obj_name), Main_Model.FashionWave);
         Main_Model.StockSet(GameObject.Find(Main_Model.ToxicGoldInc.fields.stock_obj_name), Main_Model.ToxicGoldInc);
+        Main_Model.TechNova.fields.price = price[3];
+        Main_Model.GreenPower.fields.price = price[4];
+        Main_Model.SafeBank.fields.price = price[5];
+        Main_Model.StockSet(GameObject.Find(Main_Model.TechNova.fields.stock_obj_name), Main_Model.TechNova);
+        Main_Model.StockSet(GameObject.Find(Main_Model.GreenPower.fields.stock_obj_name), Main_Model.GreenPower);
+        Main_Model.StockSet(GameObject.Find(Main_Model.SafeBank.fields.stock_obj_name), Main_Model.SafeBank);
     }
 
     public static void Aftermath(string message)

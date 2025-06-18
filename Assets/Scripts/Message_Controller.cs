@@ -28,7 +28,6 @@ public class Message_Controller : MonoBehaviour
         timer+=Time.deltaTime;
         if (Message_Model.dialogue[message - 1].type != 1)
             timer = 0;
-        Debug.Log(message);
         if (timer>=3 && Message_Model.dialogue[message-1].type == 1)
         {
             Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
@@ -39,11 +38,16 @@ public class Message_Controller : MonoBehaviour
         {
             if (GameObject.Find("a").GetComponent<Input_Handler>().Action)
             {
+                if (message+1==30)
+                {
+                    Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
+                    message++;
+                }
                 GameObject.Find("a").GetComponent<Input_Handler>().Action = false;
             }
             if (GameObject.Find("b").GetComponent<Input_Handler>().Action)
             {
-                if (message + 1 == 20 || message + 1 == 22 || message + 1 == 26)
+                if (message + 1 == 20 || message + 1 == 22 || message + 1 == 26 || message+1==28 || message+1==32 || message+1==34 || message+1==36)
                 {
                     Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
                     message++;
@@ -52,7 +56,7 @@ public class Message_Controller : MonoBehaviour
             }
             if (GameObject.Find("c").GetComponent<Input_Handler>().Action)
             {
-                if (message + 1 == 24)
+                if (message + 1 == 24 || message+1==38)
                 {
                     Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
                     message++;
@@ -67,6 +71,16 @@ public class Message_Controller : MonoBehaviour
         if (Message_Model.dialogue[message-1].type==3 && Task_Model.marked[0]==1 && message==18)
         {
             Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, false);
+            message++;
+        }
+        if (Message_Model.dialogue[message-1].type==3 && message==39 && Player.fields.status>1)
+        {
+            Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
+            message++;
+        }
+        if (Message_Model.dialogue[message-1].type==3 && message==41 && Main_Model.GreenPower.fields.amount>=1)
+        {
+            Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, true);
             message++;
         }
 

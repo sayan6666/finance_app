@@ -47,5 +47,31 @@ public class Bag_Controller : MonoBehaviour
             GameObject.Find("BMB").GetComponent<Input_Handler>().Action = false;
             Screen_Changer.Change_Screen(4);
         }
+        if (GameObject.Find("next_stock_bag").GetComponent<Input_Handler>().Action && Message_Controller.message >= 40)
+        {
+            GameObject.Find("next_stock_bag").GetComponent<Input_Handler>().Action = false;
+            var sy1 = GameObject.Find("Bag_Stock4").transform.localPosition.y;
+            var sy2 = GameObject.Find("Bag_Stock5").transform.localPosition.y;
+            var sy3 = GameObject.Find("Bag_Stock6").transform.localPosition.y;
+            GameObject.Find("Bag_Stock4").transform.SetLocalPositionAndRotation(new Vector3(0.35f, GameObject.Find("Bag_Stock1").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock5").transform.SetLocalPositionAndRotation(new Vector3(0.35f, GameObject.Find("Bag_Stock2").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock6").transform.SetLocalPositionAndRotation(new Vector3(0.35f, GameObject.Find("Bag_Stock3").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock1").transform.SetLocalPositionAndRotation(new Vector3(0.35f, sy1, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock2").transform.SetLocalPositionAndRotation(new Vector3(0.35f, sy2, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock3").transform.SetLocalPositionAndRotation(new Vector3(0.35f, sy3, 0), new Quaternion(0, 0, 0, 0));
+        }
+        if (GameObject.Find("Prev_stock_bag").GetComponent<Input_Handler>().Action && Message_Controller.message >= 40)
+        {
+            GameObject.Find("Prev_stock_bag").GetComponent<Input_Handler>().Action = false;
+            var sy1 = GameObject.Find("Stock4").transform.localPosition.y;
+            var sy2 = GameObject.Find("Stock5").transform.localPosition.y;
+            var sy3 = GameObject.Find("Stock6").transform.localPosition.y;
+            GameObject.Find("Bag_Stock4").transform.SetLocalPositionAndRotation(new Vector3(0.35f, GameObject.Find("Bag_Stock1").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock5").transform.SetLocalPositionAndRotation(new Vector3(0.35f, GameObject.Find("Bag_Stock2").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock6").transform.SetLocalPositionAndRotation(new Vector3(0.35f, GameObject.Find("Bag_Stock3").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock1").transform.SetLocalPositionAndRotation(new Vector3(0.35f, sy1, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock2").transform.SetLocalPositionAndRotation(new Vector3(0.35f, sy2, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Bag_Stock3").transform.SetLocalPositionAndRotation(new Vector3(0.35f, sy3, 0), new Quaternion(0, 0, 0, 0));
+        }
     }
 }

@@ -24,6 +24,15 @@ public class Bag_Model : MonoBehaviour
         GameObject.Find("Bag_Stock2").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.name);
         GameObject.Find("Bag_Stock2").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.amount.ToString() + " шт.");
         GameObject.Find("Bag_Stock2").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.FashionWave.fields.price.ToString() + "₽");
+        GameObject.Find("Bag_Stock4").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.TechNova.fields.name);
+        GameObject.Find("Bag_Stock4").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.TechNova.fields.amount.ToString() + " шт.");
+        GameObject.Find("Bag_Stock4").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.TechNova.fields.price.ToString() + "₽");
+        GameObject.Find("Bag_Stock5").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenPower.fields.name);
+        GameObject.Find("Bag_Stock5").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenPower.fields.amount.ToString() + " шт.");
+        GameObject.Find("Bag_Stock5").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.GreenPower.fields.price.ToString() + "₽");
+        GameObject.Find("Bag_Stock6").transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.SafeBank.fields.name);
+        GameObject.Find("Bag_Stock6").transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.SafeBank.fields.amount.ToString() + " шт.");
+        GameObject.Find("Bag_Stock6").transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().SetText(Main_Model.SafeBank.fields.price.ToString() + "₽");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

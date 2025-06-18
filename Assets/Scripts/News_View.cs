@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class News_View : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class News_View : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Player.fields.money_display4.SetText(Player.fields.money.ToString()+ "₽");
         for (int i=0;i<3;i++)
             if (!News_Model.News[i].instanced && Player.fields.day >= News_Model.News[i].day)
             {

@@ -17,6 +17,9 @@ public class Main_Controller : MonoBehaviour
         Main_Model.ToxicGoldInc.Input_Check();
         Main_Model.GreenTechSolutions.Input_Check();
         Main_Model.FashionWave.Input_Check();
+        Main_Model.TechNova.Input_Check();
+        Main_Model.GreenPower.Input_Check();
+        Main_Model.SafeBank.Input_Check();
         if (GameObject.Find("Phone_Button").GetComponent<Input_Handler>().Action)
         {
             Screen_Changer.Change_Screen(4);
@@ -35,7 +38,7 @@ public class Main_Controller : MonoBehaviour
         if (GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action)
         {
             GameObject.Find("Wait_Button").GetComponent<Input_Handler>().Action = false;
-            Wait_Model.StatsUpdate(new int[3] { Random.Range(News_Model.News[2].instanced ? 20000 : 4000, News_Model.News[2].instanced ? 20000 : 9900), Random.Range(4500, 9600), Random.Range(100,800) });
+            Wait_Model.StatsUpdate(new int[6] { Random.Range(News_Model.News[2].instanced ? 20000 : 4000, News_Model.News[2].instanced ? 30000 : 9900), Random.Range(4500, 9600), Random.Range(100,800), Random.Range(2000,5000), Random.Range(4500,7000), Random.Range(7000,10000) });
             Player.fields.day++;
             /* Main_Model.GreenTechSolutions.fields.price = 100;
              Main_Model.FashionWave.fields.price = 80;
@@ -55,6 +58,9 @@ public class Main_Controller : MonoBehaviour
             DB_Handler.Update_Stock(Main_Model.GreenTechSolutions.fields/*Stock_List.stocks[0]*/);
             DB_Handler.Update_Stock(Main_Model.FashionWave.fields);
             DB_Handler.Update_Stock(Main_Model.ToxicGoldInc.fields);
+            DB_Handler.Update_Stock(Main_Model.TechNova.fields);
+            DB_Handler.Update_Stock(Main_Model.GreenPower.fields);
+            DB_Handler.Update_Stock(Main_Model.SafeBank.fields);
         }
         if (GameObject.Find("News_Button").GetComponent<Input_Handler>().Action==true)
         {
@@ -73,5 +79,32 @@ public class Main_Controller : MonoBehaviour
         }
         if (Main_Model.timer >= 2f && GameObject.Find("Main Camera").transform.position.x < -5)
             Screen_Changer.Change_Screen(2);
+
+        if (GameObject.Find("next_stock").GetComponent<Input_Handler>().Action && Message_Controller.message>=40)
+        {
+            GameObject.Find("next_stock").GetComponent<Input_Handler>().Action = false;
+            var sy1 = GameObject.Find("Stock4").transform.localPosition.y;
+            var sy2 = GameObject.Find("Stock5").transform.localPosition.y;
+            var sy3 = GameObject.Find("Stock6").transform.localPosition.y;
+            GameObject.Find("Stock4").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, GameObject.Find("Stock1").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock5").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, GameObject.Find("Stock2").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock6").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, GameObject.Find("Stock3").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock1").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, sy1, 0),new Quaternion(0,0,0,0));
+            GameObject.Find("Stock2").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, sy2, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock3").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, sy3, 0), new Quaternion(0, 0, 0, 0));
+        }
+        if (GameObject.Find("Prev_stock").GetComponent<Input_Handler>().Action && Message_Controller.message >= 40)
+        {
+            GameObject.Find("Prev_stock").GetComponent<Input_Handler>().Action = false;
+            var sy1 = GameObject.Find("Stock4").transform.localPosition.y;
+            var sy2 = GameObject.Find("Stock5").transform.localPosition.y;
+            var sy3 = GameObject.Find("Stock6").transform.localPosition.y;
+            GameObject.Find("Stock4").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, GameObject.Find("Stock1").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock5").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, GameObject.Find("Stock2").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock6").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, GameObject.Find("Stock3").transform.localPosition.y, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock1").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, sy1, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock2").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, sy2, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Find("Stock3").transform.SetLocalPositionAndRotation(new Vector3(-0.0094f, sy3, 0), new Quaternion(0, 0, 0, 0)); 
+        }
     }
 }
