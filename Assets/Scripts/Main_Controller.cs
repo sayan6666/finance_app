@@ -43,12 +43,19 @@ public class Main_Controller : MonoBehaviour
             /* Main_Model.GreenTechSolutions.fields.price = 100;
              Main_Model.FashionWave.fields.price = 80;
              Main_Model.ToxicGoldInc.fields.price = 1;*/
-            if (Task_Model.marked[0] == 0)
+            if (!Task_Model.firstsstock.done)
             {
                 if (!Main_Model.GreenTechSolutions.LastWeekAdvice() && !Main_Model.FashionWave.LastWeekAdvice() && !Main_Model.ToxicGoldInc.LastWeekAdvice())
                     Main_Model.verdict = 0;
                 else
-                { Task_Model.marked[0] = 1; }
+                { Task_Model.firstsstock.done = true; }
+            }
+            if (!Task_Model.difchoice.done)
+            {
+                if (!Main_Model.TechNova.LastWeekAdvice() && !Main_Model.GreenPower.LastWeekAdvice() && !Main_Model.SafeBank.LastWeekAdvice())
+                    Main_Model.verdict = 0;
+                else
+                { Task_Model.difchoice.done = true; }
             }
             Screen_Changer.Change_Screen(-1);
             Main_Model.timer = 0;

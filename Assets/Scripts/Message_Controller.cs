@@ -68,7 +68,7 @@ public class Message_Controller : MonoBehaviour
                 GameObject.Find("d").GetComponent<Input_Handler>().Action = false;
             }
         }
-        if (Message_Model.dialogue[message-1].type==3 && Task_Model.marked[0]==1 && message==18)
+        if (Message_Model.dialogue[message-1].type==3 && Task_Model.firstsstock.done==true && message==18)
         {
             Message_Model.AddMessage(Message_Model.dialogue[message].text, 4, Message_Model.dialogue[message].side, false);
             message++;

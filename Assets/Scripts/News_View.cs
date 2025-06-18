@@ -15,7 +15,7 @@ public class News_View : MonoBehaviour
         for (int i=0;i<3;i++)
             if (!News_Model.News[i].instanced && Player.fields.day >= News_Model.News[i].day)
             {
-                News_Model.Blocks[i].transform.SetLocalPositionAndRotation(new Vector3(0, News_Model.Blocks[i].transform.localPosition.y - 12, 0), new Quaternion(0, 0, 0, 0));
+                News_Model.Blocks[i].transform.SetLocalPositionAndRotation(new Vector3(0, News_Model.Blocks[i].transform.localPosition.y - 13, 0), new Quaternion(0, 0, 0, 0));
                 News_Model.News[i].instanced = true;
             }
     }

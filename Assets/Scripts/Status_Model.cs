@@ -26,7 +26,7 @@ public class Status_Model : MonoBehaviour
             GameObject.Find("Exit_Status").GetComponent<Input_Handler>().Action = false;
             Screen_Changer.Change_Screen(3);
         }
-        if (GameObject.Find("Buy_Status").GetComponent<Input_Handler>().Action)
+        if (GameObject.Find("Buy_Status").GetComponent<Input_Handler>().Action && Player.fields.money>=1000)
         {
 
             Debug.Log("+++");

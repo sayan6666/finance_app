@@ -87,6 +87,8 @@ public class Message_Model : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Message_Controller.message==38)
+            Task_Model.knowledge.done = true;
         if (dialogue[Message_Controller.message - 1].side == "left")
         {
             double y = -(prev_height + (((double)GameObject.Find("Message_Origin").GetComponent<RectTransform>().rect.height - prev_height) / 2d));
